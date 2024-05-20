@@ -6,14 +6,11 @@ import { StdButton } from "@/components/buttons/StdButton";
 import { Image } from "@nextui-org/react";
 import { Dot } from "lucide-react";
 import Link from "next/link";
-import { getSession } from "./lib/session";
-import { user } from "./lib/empresas";
+import { user } from "../lib/empresas";
 
-export default async function Home() {
+export default async function HomeLogado() {
 
   // const user = await getSession()
-
-  const user = ""
 
   return (
     <main className="text-sun-900 font-outfit bg-sun-950 bg-contain bg-no-repeat bg-[url('/landingpage-bg.png')]" style={{
@@ -102,8 +99,6 @@ export default async function Home() {
           <Image src="/funciona3.png" className="w-[27.3125rem] h-auto " />
         </div>
       </section>
-      {/* <CadastreSection user={user} /> */}
-      <CadastreSection user="" />
       <Footer />
     </main >
   );

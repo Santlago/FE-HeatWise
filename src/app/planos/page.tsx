@@ -4,11 +4,8 @@ import Footer from "@/components/Footer";
 import { BorderedButton } from "@/components/buttons/BorderedButton";
 import { Image } from "@nextui-org/react";
 import Link from "next/link";
-import { getSession } from "../lib/session";
 
 export default async function Planos() {
-
-    const user = await getSession()
 
     const planos = [
         {
@@ -45,7 +42,7 @@ export default async function Planos() {
                             width={197}
                         />
                     </Link>
-                    <Link href="/">
+                    <Link href="/homelogado">
                         <BorderedButton text="Voltar" />
                     </Link>
                 </div>

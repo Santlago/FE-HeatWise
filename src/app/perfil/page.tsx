@@ -8,22 +8,11 @@ import { PlusButton } from "@/components/buttons/PlusButton";
 import { StdSmallButton } from "@/components/buttons/StdSmallButton";
 import { WhiteButton } from "@/components/buttons/WhiteButton";
 import { Mail, Phone } from "lucide-react";
+import { user } from "../lib/empresas";
+import { sites } from "../lib/sites";
 
 export default async function Perfil() {
-    const user = await getSession();
-
-    const sites = [
-        {
-            id: 1,
-            nome: "Folha de Pagamento",
-            url: "http://folhadepagamento.com.br"
-        },
-        {
-            id: 2,
-            nome: "Banco de horas",
-            url: "http://bancodehoras.com.br"
-        }
-    ]
+    // const user = await getSession();
 
     return (
         <main className="min-h-screen flex flex-col" style={{
@@ -40,7 +29,7 @@ export default async function Perfil() {
                     />
                 </Link>
                 {/* <LogoutButton text="Logout"/> */}
-                <Link href='/'>
+                <Link href='/homelogado'>
                     <BorderedButton text="Voltar" />
                 </Link>
             </div>

@@ -1,11 +1,12 @@
-import 'server-only';
-import { SignJWT, jwtVerify, JWTPayload } from 'jose';
-import { SessionPayload } from '@/app/lib/definitions';
-import { cookies } from 'next/headers';
-import { getById } from '../actions/empresa/get-by-id';
-import { redirect } from 'next/navigation';
+// lib/session.ts
 
-const secretKey = process.env.SESSION_SECRET;
+import { SessionPayload } from '@/app/lib/definitions';
+import { SignJWT, jwtVerify } from 'jose';
+import { cookies } from 'next/headers';
+import 'server-only';
+import { getById } from '../actions/empresa/get-by-id';
+
+const secretKey = process.env.SESSION_SECRET!;
 const encodedKey = new TextEncoder().encode(secretKey);
 
 export async function encrypt(payload: SessionPayload) {
@@ -59,15 +60,13 @@ export async function getSession() {
     }
 
     const userId = session.userId;
-    console.log(session);
 
     // If userId is a number, it must be asserted correctly
     if (typeof userId !== 'string' && typeof userId !== 'number') {
       throw new Error('Invalid userId type');
     }
 
-    const user = await getById(userId as number);
-    console.log(session.userId);
+    const user = await getById(Number(userId));
     return user;
   } catch (error) {
     console.error('Error retrieving session:', error);

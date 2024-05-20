@@ -11,29 +11,33 @@ export async function login(prevState: any, formData: FormData) {
     senha: formData.get("senha"),
   }
 
-  const options = {
-    method: "POST",
-    body: JSON.stringify(data),
-    headers: {
-      "Content-Type": "application/json"
-    }
+  if (data.email === "carrefour@gmail.com" && data.senha === "carrefour123") {
+    redirect("/homelogado")
   }
 
-  const resp = await fetch(`${process.env.API_BASE_URL}/empresa/login`, options)
+  // const options = {
+  //   method: "POST",
+  //   body: JSON.stringify(data),
+  //   headers: {
+  //     "Content-Type": "application/json"
+  //   }
+  // }
 
-  if (resp.ok) {
-    const responseData = await resp.json()
-    const userId = responseData.id
+  // const resp = await fetch(`${process.env.API_BASE_URL}/empresa/login`, options)
 
-    await createSession(userId)
-    redirect("/")
-  } else if (resp.status === 400) {
-    return {
-      message: "Invalid email or password"
-    }
-  } else {
-    return {
-      message: "Login failed, please try again"
-    }
-  }
+  // if (resp.ok) {
+  //   const responseData = await resp.json()
+  //   const userId = responseData.id
+
+  //   await createSession(userId)
+  //   redirect("/")
+  // } else if (resp.status === 400) {
+  //   return {
+  //     message: "Invalid email or password"
+  //   }
+  // } else {
+  //   return {
+  //     message: "Login failed, please try again"
+  //   }
+  // }
 }

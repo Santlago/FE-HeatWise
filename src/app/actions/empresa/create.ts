@@ -1,6 +1,5 @@
 "use server"
 
-import { createSession } from "@/app/lib/session"
 import { redirect } from "next/navigation"
 
 export async function create(prevState: any, formData: FormData) {
@@ -26,11 +25,11 @@ export async function create(prevState: any, formData: FormData) {
   const resp = await fetch(`${process.env.API_BASE_URL}/empresa`, options)
 
   if (resp.ok) {
-    const responseData = await resp.json()
-    const userId = responseData.id
+    // const responseData = await resp.json()
+    // const userId = responseData.id
 
-    await createSession(userId)
-    redirect("/")
+    // await createSession(userId)
+    redirect("/homelogado")
   }
 
   if (resp.status == 400) {
