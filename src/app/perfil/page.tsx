@@ -14,7 +14,6 @@ import { cookies } from "next/headers";
 
 export default async function Perfil() {
     const user = await getSession();
-    console.log(user)
 
     const sites = [
         {
@@ -43,6 +42,7 @@ export default async function Perfil() {
                         width={197}
                     />
                 </Link>
+                <LogoutButton text="Logout"/>
                 <Link href='/'>
                     <BorderedButton text="Voltar" />
                 </Link>

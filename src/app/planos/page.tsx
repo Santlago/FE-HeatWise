@@ -9,7 +9,6 @@ import { getSession } from "../lib/session";
 export default async function Planos() {
 
     const user = await getSession()
-    console.log(user)
 
     const planos = [
         {

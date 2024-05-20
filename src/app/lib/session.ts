@@ -44,7 +44,6 @@ export async function getSession() {
   try {
     const cookieStore = cookies();
     const sessionCookie = cookieStore.get('session');
-    console.log(sessionCookie)
 
     if (!sessionCookie) {
       // No session cookie found

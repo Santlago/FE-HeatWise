@@ -1,16 +1,28 @@
-"use client"
+"use server"
 
 import { Button } from "@nextui-org/react";
 import { logout } from "@/app/actions/auth";
+import { deleteSession } from "@/app/lib/session";
+import { redirect } from "next/navigation";
 
 interface LogoutButtonProps {
     text: string;
 }
 
-export function LogoutButton({ text }: LogoutButtonProps) {
+export async function LogoutButton({ text }: LogoutButtonProps) {
     // const handleLogout = async () => {
     //     await logout(); 
     // };
+
+    async function logout() {
+        try {
+            await deleteSession(); 
+            redirect('/'); 
+        } catch (error) {
+            console.error('Error logging out:', error);
+    
+        }
+    }
 
     return (
         <Button 
