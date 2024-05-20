@@ -3,7 +3,7 @@
 import { JWTPayload } from 'jose';
 
 export interface SessionPayload extends JWTPayload {
-  userId: string;
+  userId: string | number;
   expiresAt: Date;
   // Add more properties as needed based on your session payload requirements
 }

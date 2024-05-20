@@ -42,7 +42,7 @@ export default async function Perfil() {
                         width={197}
                     />
                 </Link>
-                <LogoutButton text="Logout"/>
+                {/* <LogoutButton text="Logout"/> */}
                 <Link href='/'>
                     <BorderedButton text="Voltar" />
                 </Link>
