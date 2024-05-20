@@ -35,7 +35,7 @@ export default async function Home() {
           </Link>
           {user ? (
             <Link href="/perfil">
-              <ProfileButton text={user.nome} />
+              {/* <ProfileButton text={user.nome} /> */}
             </Link>
           ) : (
             <Link href="/login">

@@ -13,6 +13,10 @@ export async function login(prevState: any, formData: FormData) {
 
   if (data.email === "carrefour@gmail.com" && data.senha === "carrefour123") {
     redirect("/homelogado")
+  } else {
+    return {
+      message: "Invalid email or password"
+    }
   }
 
   // const options = {
