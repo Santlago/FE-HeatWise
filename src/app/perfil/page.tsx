@@ -1,16 +1,13 @@
 import { BorderedButton } from "@/components/buttons/BorderedButton";
-import { Button, Image, Input, ScrollShadow } from "@nextui-org/react";
+import { Image, Input, ScrollShadow } from "@nextui-org/react";
 import Link from "next/link";
-import { deleteSession, getSession } from "../lib/session";
+import { getSession } from "../lib/session";
 // import { WhiteButton } from "@/components/buttons/WhiteButton";
 // import { LogoutButton } from "@/components/buttons/LogoutButton";
+import { PlusButton } from "@/components/buttons/PlusButton";
 import { StdSmallButton } from "@/components/buttons/StdSmallButton";
 import { WhiteButton } from "@/components/buttons/WhiteButton";
 import { Mail, Phone } from "lucide-react";
-import { PlusButton } from "@/components/buttons/PlusButton";
-import { LogoutButton } from "@/components/buttons/LogoutButton";
-import { logout } from "../actions/auth";
-import { cookies } from "next/headers";
 
 export default async function Perfil() {
     const user = await getSession();
