@@ -1,8 +1,7 @@
 "use server"
 
-import { Button } from "@nextui-org/react";
-import { logout } from "@/app/actions/auth";
 import { deleteSession } from "@/app/lib/session";
+import { Button } from "@nextui-org/react";
 import { redirect } from "next/navigation";
 
 interface LogoutButtonProps {
