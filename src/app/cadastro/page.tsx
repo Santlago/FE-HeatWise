@@ -44,6 +44,7 @@ export default async function Cadastro() {
                                 <p>Preencha com base nos dados da empresa</p>
                                 <Input type="text" label="Nome da empresa" name="nome" variant="underlined" isInvalid={state?.messageNome != ''} errorMessage={state?.messageNome} />
                                 <Input type="text" label="CNPJ" name="cnpj" variant="underlined" />
+                                <Input type="password" label="Senha" name="senha" variant="underlined" />
                             </div>
                             <div>
                                 <h2 className="text-[0.942rem] font-bold">Contatos</h2>

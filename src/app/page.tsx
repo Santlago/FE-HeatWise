@@ -1,19 +1,16 @@
+import { CadastreSection } from "@/components/CadastreSection";
 import Footer from "@/components/Footer";
 import { BorderedButton } from "@/components/buttons/BorderedButton";
-import { BorderedProfileButton } from "@/components/buttons/BorderedProfileButton";
 import { ProfileButton } from "@/components/buttons/ProfileButton";
 import { StdButton } from "@/components/buttons/StdButton";
-import { WhiteButton } from "@/components/buttons/WhiteButton";
-import { Button, Image } from "@nextui-org/react"
+import { Image } from "@nextui-org/react";
 import { Dot } from "lucide-react";
 import Link from "next/link";
 import { getSession } from "./lib/session";
-import { CadastreSection } from "@/components/CadastreSection";
 
 export default async function Home() {
 
   const user = await getSession()
-  console.log(user)
 
   return (
     <main className="text-sun-900 font-outfit bg-sun-950 bg-contain bg-no-repeat bg-[url('/landingpage-bg.png')]" style={{

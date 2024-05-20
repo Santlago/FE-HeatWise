@@ -1,7 +1,7 @@
 import { BorderedButton } from "@/components/buttons/BorderedButton";
 import { Button, Image, Input, ScrollShadow } from "@nextui-org/react";
 import Link from "next/link";
-import { getSession } from "../lib/session";
+import { deleteSession, getSession } from "../lib/session";
 // import { WhiteButton } from "@/components/buttons/WhiteButton";
 // import { LogoutButton } from "@/components/buttons/LogoutButton";
 import { StdSmallButton } from "@/components/buttons/StdSmallButton";
@@ -9,6 +9,8 @@ import { WhiteButton } from "@/components/buttons/WhiteButton";
 import { Mail, Phone } from "lucide-react";
 import { PlusButton } from "@/components/buttons/PlusButton";
 import { LogoutButton } from "@/components/buttons/LogoutButton";
+import { logout } from "../actions/auth";
+import { cookies } from "next/headers";
 
 export default async function Perfil() {
     const user = await getSession();
@@ -44,7 +46,6 @@ export default async function Perfil() {
                 <Link href='/'>
                     <BorderedButton text="Voltar" />
                 </Link>
-                {/* <LogoutButton text="Logout"/> */}
             </div>
             <h1 className="text-center text-[2.9rem] font-outfit text-sun-50 font-bold">Perfil da Empresa</h1>
             <div id="forms" className="flex-grow flex justify-center items-center gap-[2.59rem]">

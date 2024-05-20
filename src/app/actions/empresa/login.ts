@@ -3,14 +3,10 @@
 import { createSession } from "@/app/lib/session"
 import { redirect } from "next/navigation"
 
-export async function create(prevState: any, formData: FormData) {
+export async function login(prevState: any, formData: FormData) {
   await new Promise(r => setTimeout(r, 1000))
 
   const data = {
-    nome: formData.get("nome"),
-    cnpj: formData.get("cnpj"),
-    idPlano: parseInt(formData.get("plano")?.toString() || "1", 10),
-    telefone: formData.get("telefone"),
     email: formData.get("email"),
     senha: formData.get("senha"),
   }
@@ -23,7 +19,7 @@ export async function create(prevState: any, formData: FormData) {
     }
   }
 
-  const resp = await fetch(`${process.env.API_BASE_URL}/empresa`, options)
+  const resp = await fetch(`${process.env.API_BASE_URL}/empresa/login`, options)
 
   if (resp.ok) {
     const responseData = await resp.json()
@@ -31,12 +27,13 @@ export async function create(prevState: any, formData: FormData) {
 
     await createSession(userId)
     redirect("/")
-  }
-
-  if (resp.status == 400) {
+  } else if (resp.status === 400) {
     return {
-      messageNome: "Validação falhou"
+      message: "Invalid email or password"
+    }
+  } else {
+    return {
+      message: "Login failed, please try again"
     }
   }
-
 }

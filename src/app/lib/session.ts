@@ -41,16 +41,29 @@ export async function createSession(userId: string) {
 }
 
 export async function getSession() {
-  const cookieStore = cookies()
-  const sessionCookie = cookieStore.get('session')
+  try {
+    const cookieStore = cookies();
+    const sessionCookie = cookieStore.get('session');
+    console.log(sessionCookie)
 
-  if (!sessionCookie) {
-    return null
+    if (!sessionCookie) {
+      // No session cookie found
+      return null;
+    }
+
+    const session = await decrypt(sessionCookie.value);
+
+    if (!session || !session.userId) {
+      // Invalid or incomplete session data
+      return null;
+    }
+
+    const user = await getById(session.userId);
+    return user;
+  } catch (error) {
+    console.error('Error retrieving session:', error);
+    return null;
   }
-
-  const session = await decrypt(sessionCookie.value)
-
-  return await getById(session.userId)
 }
 
 export async function deleteSession() {
